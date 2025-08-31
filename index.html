@@ -37,8 +37,9 @@
         <img src="https://drive.google.com/thumbnail?id=1BBou_2tJ5pMTvzO6y57UqXjVkmsC9upd&sz=w1000">
         <img src="https://drive.google.com/thumbnail?id=1X6aScBITNMmdrqmqQqQYEJ5CqMKz9RU-&sz=w1000">
       </div>
+      <button class="carousel-btn prev">‹</button>
+      <button class="carousel-btn next">›</button>
     </div>
-
     <h2>กำหนดการ</h2>
     <p> <strong> 9.00 </strong> แห่ขันหมาก พิธีผูกข้อไม้ ข้อมือ และไหว้ผู้ใหญ่
     <br> <strong>11.00 </strong> ลงทะเบียน
@@ -78,13 +79,13 @@
       </div>
     </div>
   </section>
-
+<!--
   <section id="pictures" class="pictures fade-in">
     <h2>รูปภาพ</h2>
+    
     <div class="carousel">
       <div class="carousel-track">
-        <!-- "https://drive.google.com/thumbnail?id=&sz=w1000"> 
-        -->
+
         <img src="https://drive.google.com/thumbnail?id=1DBzzj6d65SND7xbZhtN_uxDkCb6qQN2a&sz=w1000">
         <img src="https://drive.google.com/thumbnail?id=1AsDQ_zeC4SNFCVCSS-5sIh3wTtVO2roA&sz=w1000">
         <img src="https://drive.google.com/thumbnail?id=1EpYsvyAosDh8FN5NbpmVz_Lvhmr6fCs9&sz=w1000">
@@ -100,6 +101,48 @@
       <button class="carousel-btn prev">‹</button>
       <button class="carousel-btn next">›</button>
     </div>
+ -->
+  <section id="pictures" class="fade-in">
+    <h2>Our Pictures</h2>
+
+    <!-- Album buttons -->
+    <div class="album-buttons">
+      <button class="album-btn active" onclick="showAlbum('album1')">Chiangmai</button>
+      <button class="album-btn" onclick="showAlbum('album2')">Japan</button>
+      <button class="album-btn" onclick="showAlbum('album3')">Wedding</button>
+    </div>
+
+    <!-- Main image preview -->
+    <div class="img-preview">
+      <img id="expandedImg" src="https://drive.google.com/thumbnail?id=1DBzzj6d65SND7xbZhtN_uxDkCb6qQN2a&sz=w1000" alt="Preview">
+    </div>
+
+    <!-- Scrollable thumbnail galleries -->
+    <div id="album1" class="gallery-row active">
+      <img src="https://drive.google.com/thumbnail?id=1DBzzj6d65SND7xbZhtN_uxDkCb6qQN2a&sz=w1000" onclick="expandImage(this)" alt="album1_1">
+      <img src="https://drive.google.com/thumbnail?id=1AsDQ_zeC4SNFCVCSS-5sIh3wTtVO2roA&sz=w1000" onclick="expandImage(this)" alt="album1_2">
+      <img src="https://drive.google.com/thumbnail?id=1EpYsvyAosDh8FN5NbpmVz_Lvhmr6fCs9&sz=w1000" onclick="expandImage(this)" alt="album1_3">
+      <img src="https://drive.google.com/thumbnail?id=1BhvOOx-t_M8gsCwbLvl7WrtoziI3bInm&sz=w1000" onclick="expandImage(this)" alt="album1_4">
+    </div>
+
+    <div id="album2" class="gallery-row">
+      <img src="https://drive.google.com/thumbnail?id=1DBzzj6d65SND7xbZhtN_uxDkCb6qQN2a&sz=w1000" onclick="expandImage(this)" alt="album2_1">
+      <img src="https://drive.google.com/thumbnail?id=1AsDQ_zeC4SNFCVCSS-5sIh3wTtVO2roA&sz=w1000" onclick="expandImage(this)" alt="album2_2">
+      <img src="https://drive.google.com/thumbnail?id=1EpYsvyAosDh8FN5NbpmVz_Lvhmr6fCs9&sz=w1000" onclick="expandImage(this)" alt="album2_3">
+      <img src="https://drive.google.com/thumbnail?id=1BhvOOx-t_M8gsCwbLvl7WrtoziI3bInm&sz=w1000" onclick="expandImage(this)" alt="album2_4">
+      <img src="https://drive.google.com/thumbnail?id=1oIpE-p139L3TRSmYeAjLXeTcAAJILMKp&sz=w1000" onclick="expandImage(this)" alt="album2_5">
+      <img src="https://drive.google.com/thumbnail?id=1pF5cp01wFQaVHzzXq01rGUdqu5pFZE0t&sz=w1000" onclick="expandImage(this)" alt="album2_6">
+      <img src="https://drive.google.com/thumbnail?id=1-yQRlCFqRR3zEcfQTpDwCfoJJfcIzoJB&sz=w1000" onclick="expandImage(this)" alt="album2_7">
+      <img src="https://drive.google.com/thumbnail?id=1bUNdtkDsbARDcxT1Wg82_ivruoZjpXp3&sz=w1000" onclick="expandImage(this)" alt="album2_8">
+      <img src="https://drive.google.com/thumbnail?id=1OiM-Rh5N6-5Rt5fR8lPZVmz8k0YwKcVg&sz=w1000" onclick="expandImage(this)" alt="album2_9">
+      <img src="" onclick="expandImage(this)" alt="album2_10">
+    </div>
+
+    <div id="album3" class="gallery-row">
+      <p>Comming soon...</p>
+      <img src="images/album3/photo1.jpg" onclick="expandImage(this)" alt="Wedding 1">
+    </div>
+  </section>
 
   <section id="bridesmaid" class="bridesmaid">
     <h2>เพื่อนบ่าว-สาว</h2>
@@ -133,6 +176,8 @@
         <p>Tang</p>
         </div>
   </section>
+
+
 
   <script src="script.js"></script>
 </body>

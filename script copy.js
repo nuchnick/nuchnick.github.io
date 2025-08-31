@@ -61,31 +61,3 @@ document.addEventListener("DOMContentLoaded", () => {
     startAutoSlide();
   }
 });
-
-// Expand clicked thumbnail
-function expandImage(img) {
-  const expandedImg = document.getElementById("expandedImg");
-  expandedImg.src = img.src;
-  expandedImg.alt = img.alt;
-}
-
-// Show selected album
-function showAlbum(albumId) {
-  // Hide all albums
-  document.querySelectorAll(".gallery-row").forEach(row => {
-    row.classList.remove("active");
-  });
-
-  // Show chosen album
-  document.getElementById(albumId).classList.add("active");
-
-  // Update album buttons
-  document.querySelectorAll(".album-btn").forEach(btn => {
-    btn.classList.remove("active");
-  });
-  event.target.classList.add("active");
-
-  // Reset preview to first image of new album
-  const firstImg = document.querySelector(`#${albumId} img`);
-  if (firstImg) expandImage(firstImg);
-}
