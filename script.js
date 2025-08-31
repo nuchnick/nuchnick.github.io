@@ -16,44 +16,48 @@ document.querySelectorAll(".fade-in").forEach(el => {
   observer.observe(el);
 });
 
-// Carousel auto-play + touch support
-const track = document.querySelector(".carousel-track");
-if (track) {
-  let index = 0;
-  const slides = track.children.length;
-  let startX = 0;
-  let currentX = 0;
+// Carousel with auto-slide + buttons
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".carousel-track");
+  const prevBtn = document.querySelector(".carousel-btn.prev");
+  const nextBtn = document.querySelector(".carousel-btn.next");
 
-  // Auto-play
-  setInterval(() => {
-    index = (index + 1) % slides;
-    track.style.transform = `translateX(-${index * 100}%)`;
-    track.style.transition = "transform 0.8s ease";
-  }, 4000);
+  if (track && prevBtn && nextBtn) {
+    let index = 0;
+    const slides = track.children.length;
+    let autoSlideInterval;
 
-  // Touch start
-  track.addEventListener("touchstart", (e) => {
-    startX = e.touches[0].clientX;
-    track.style.transition = "none"; // cancel smooth for drag
-  });
-
-  // Touch move
-  track.addEventListener("touchmove", (e) => {
-    currentX = e.touches[0].clientX - startX;
-    track.style.transform = `translateX(calc(-${index * 100}% + ${currentX}px))`;
-  });
-
-  // Touch end
-  track.addEventListener("touchend", (e) => {
-    if (currentX > 50 && index > 0) {
-      index--; // swipe right → previous slide
-    } else if (currentX < -50 && index < slides - 1) {
-      index++; // swipe left → next slide
+    function updateCarousel() {
+      track.style.transition = "transform 0.8s ease";
+      track.style.transform = `translateX(-${index * 100}%)`;
     }
-    track.style.transition = "transform 0.5s ease";
-    track.style.transform = `translateX(-${index * 100}%)`;
 
-    // reset drag distance
-    currentX = 0;
-  });
-}
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(() => {
+        index = (index + 1) % slides;
+        updateCarousel();
+      }, 4000); // slide every 4s
+    }
+
+    function resetAutoSlide() {
+      clearInterval(autoSlideInterval);
+      startAutoSlide();
+    }
+
+    // Button controls
+    nextBtn.addEventListener("click", () => {
+      index = (index + 1) % slides;
+      updateCarousel();
+      resetAutoSlide();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      index = (index - 1 + slides) % slides;
+      updateCarousel();
+      resetAutoSlide();
+    });
+
+    // Start autoplay when page loads
+    startAutoSlide();
+  }
+});
