@@ -47,6 +47,10 @@ section.visible {
     .bridesmaid {
       background: #fff0f5;
     }
+    .groomsmen {
+      background: #f8faff;
+    }
+
 /* Navigation */
     header {
       position: fixed;
@@ -179,6 +183,7 @@ section.visible {
 .carousel-btn.next {
   right: 1px;
 }
+
 /* Bridesmaid */
 .bridesmaid-list {
   display: grid;
@@ -217,7 +222,6 @@ section.visible {
   }
 }
 
-
 /*
     .bridesmaid-list {
       display: flex;
@@ -253,6 +257,8 @@ section.visible {
     }
   }
 */
+
+
 
 /* Album buttons */
 .album-buttons {
