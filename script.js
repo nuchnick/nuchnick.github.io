@@ -124,7 +124,7 @@ function enableSwipeScroll() {
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - row.offsetLeft;
-      const walk = (x - startX) * 1.5; // scroll speed factor
+      const walk = (x - startX) * 3; // scroll speed factor
       row.scrollLeft = scrollLeft - walk;
     });
 
@@ -137,7 +137,7 @@ function enableSwipeScroll() {
 
     row.addEventListener("touchmove", (e) => {
       const touchX = e.touches[0].clientX;
-      const walk = (touchX - touchStartX) * 1.5;
+      const walk = (touchX - touchStartX) * 3; // scroll speed factor
       row.scrollLeft = scrollLeft - walk;
     });
   });

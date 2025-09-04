@@ -287,7 +287,7 @@ section.visible {
   margin-bottom: 20px;
 }
 .img-preview img {
-  width: 80%;
+  width: 90%;
   max-width: 700px;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
@@ -302,7 +302,7 @@ section.visible {
   padding: 10px;
   background: #fff;
   border-radius: 12px;
-  width: 80%;
+  width: 90%;
   cursor: grab;
   scroll-behavior: smooth;
 }
@@ -317,12 +317,11 @@ section.visible {
   margin-right: 10px;
   border-radius: 8px;
   cursor: grab;
-  transition: transform 0.3s;
+  transition: transform 0.1s;
 }
 .gallery-row img:hover {
   transform: scale(1.05);
-
+}
 .gallery-row.dragging {
   cursor: grabbing;
-}
 }
