@@ -62,12 +62,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
 // Expand clicked thumbnail
 function expandImage(img) {
   const expandedImg = document.getElementById("expandedImg");
   expandedImg.src = img.src;
   expandedImg.alt = img.alt;
+
 }
+
 
 // Show selected album
 function showAlbum(albumId) {
@@ -89,3 +92,56 @@ function showAlbum(albumId) {
   const firstImg = document.querySelector(`#${albumId} img`);
   if (firstImg) expandImage(firstImg);
 }
+
+// Enable swipe on scrollable gallery rows
+function enableSwipeScroll() {
+  const rows = document.querySelectorAll(".gallery-row");
+
+  rows.forEach(row => {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    // Desktop mouse drag
+    row.addEventListener("mousedown", (e) => {
+      isDown = true;
+      row.classList.add("dragging");
+      startX = e.pageX - row.offsetLeft;
+      scrollLeft = row.scrollLeft;
+    });
+
+    row.addEventListener("mouseleave", () => {
+      isDown = false;
+      row.classList.remove("dragging");
+    });
+
+    row.addEventListener("mouseup", () => {
+      isDown = false;
+      row.classList.remove("dragging");
+    });
+
+    row.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - row.offsetLeft;
+      const walk = (x - startX) * 1.5; // scroll speed factor
+      row.scrollLeft = scrollLeft - walk;
+    });
+
+    // Touch swipe (mobile)
+    let touchStartX = 0;
+    row.addEventListener("touchstart", (e) => {
+      touchStartX = e.touches[0].clientX;
+      scrollLeft = row.scrollLeft;
+    });
+
+    row.addEventListener("touchmove", (e) => {
+      const touchX = e.touches[0].clientX;
+      const walk = (touchX - touchStartX) * 1.5;
+      row.scrollLeft = scrollLeft - walk;
+    });
+  });
+}
+
+// Call this on page load
+document.addEventListener("DOMContentLoaded", enableSwipeScroll);
