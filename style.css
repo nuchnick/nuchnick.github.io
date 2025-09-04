@@ -306,19 +306,20 @@ section.visible {
   width: 90%;
   cursor: grab;
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
 }
 .gallery-row.active {
   display: block;
 }
 .gallery-row img {
-
-  width: 90%;
-  height: 90%;
+  display: inline-block;
+  width: 347px;
+  height: 520px;
   object-fit: cover;
   margin-right: 10px;
   border-radius: 8px;
   cursor: grab;
-  transition: transform 0.1s;
+  transition: transform 0.2s;
 }
 .gallery-row img:hover {
   transform: scale(1.05);
