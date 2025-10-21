@@ -124,7 +124,7 @@ function enableSwipeScroll() {
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - row.offsetLeft;
-      const walk = (x - startX) * 3; // scroll speed factor
+      const walk = (x - startX) * 2; // scroll speed factor
       row.scrollLeft = scrollLeft - walk;
     });
 
@@ -137,11 +137,75 @@ function enableSwipeScroll() {
 
     row.addEventListener("touchmove", (e) => {
       const touchX = e.touches[0].clientX;
-      const walk = (touchX - touchStartX) * 3; // scroll speed factor
+      const walk = (touchX - touchStartX) * 2; // scroll speed factor
       row.scrollLeft = scrollLeft - walk;
     });
   });
 }
 
+// Countdown Timer Script
 // Call this on page load
-document.addEventListener("DOMContentLoaded", enableSwipeScroll);
+// --- Element Selectors ---
+const daysEl = document.getElementById('days');
+const hoursEl = document.getElementById('hours');
+const minutesEl = document.getElementById('minutes');
+const secondsEl = document.getElementById('seconds');
+const targetDateInput = document.getElementById('targetDateInput');
+
+// --- Initial Target Date (MODIFIED) ---
+// Set the target date to January 11, 2026, at 9:09:00 AM GMT+7
+let targetDate = new Date("January 11, 2026 09:09:00 GMT+0700").getTime();
+
+// --- Function to Format Time Values ---
+// Adds a leading zero if the number is less than 10
+function formatTime(time) {
+    return time < 10 ? `0${time}` : time;
+}
+
+// --- Main Countdown Function ---
+function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    if (distance > 0) {
+        // Display the result
+        daysEl.textContent = formatTime(days);
+        hoursEl.textContent = formatTime(hours);
+        minutesEl.textContent = formatTime(minutes);
+        secondsEl.textContent = formatTime(seconds);
+    } else {
+        // If the countdown is finished
+        clearInterval(countdownInterval);
+        document.getElementById('countdown').innerHTML = '<h2>🎉 Event Started! 🎉</h2>';
+    }
+}
+
+// --- Event Listener for User Input (Kept for manual date setting) ---
+targetDateInput.addEventListener('change', (event) => {
+    // Get the new target date from the input field
+    const newTargetDate = new Date(event.target.value);
+    
+    if (!isNaN(newTargetDate)) {
+        targetDate = newTargetDate.getTime();
+        // Clear the old interval and start a new one with the new date
+        clearInterval(countdownInterval);
+        countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Call immediately to update display without waiting a second
+    } else {
+        alert("Please enter a valid date and time.");
+    }
+});
+
+// --- Initialization ---
+
+// 1. Initial Call: Update the timer immediately when the page loads
+updateCountdown(); 
+
+// 2. Set Interval: Update the timer every 1 second (1000 milliseconds)
+let countdownInterval = setInterval(updateCountdown, 1000);
