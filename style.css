@@ -59,7 +59,7 @@ section.visible {
       position: fixed;
       top: 0;
       width: 100%;
-      background: #cfe2f3;
+      background: #88a9c4;
       display: flex;
       justify-content: center;
       z-index: 1000;
@@ -76,7 +76,7 @@ section.visible {
     }
     nav a {
       text-decoration: none;
-      color: #e79fb0;
+      color: #ffffff;
       font-weight: 600;
       font-size: 16px;
       transition: color 0.3s;
@@ -411,3 +411,4 @@ h1 {
     margin-left: 10px;
     color: var(--color-text);
 }
+
