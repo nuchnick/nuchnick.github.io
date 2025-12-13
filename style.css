@@ -32,6 +32,12 @@ section.visible {
     h1, h2 {
       color: #e79fb0;
     }
+    h3 {
+      font-weight: 400;
+      color: #e79fb0; /* Sakura pink */
+      text-align: center;
+      line-height: 1.2;
+    }
     .overall {
       padding: 80px 20px;
       background: linear-gradient(#cfe2f3, white);
@@ -44,6 +50,7 @@ section.visible {
     }
     .dresscode {
       background: linear-gradient(white );
+      overflow: hidden;
     }
     .register {
       background: #fff0f5;
@@ -52,7 +59,7 @@ section.visible {
       background: #ffffff;
     }
     .stories {
-      background: #fff0f5;
+      background: #dee6ec;
     }
     .pictures {
       background: #f8faff;
@@ -116,7 +123,7 @@ section.visible {
 
 /* Right pink dot */
 .dot.right {
-  right: -70px;
+  right: -50px;
   top: 30%;
   background: #e79fb0;
 }
@@ -146,39 +153,84 @@ section.visible {
   max-width: 800px;
 }
 
-/* Timeline (Our Stories) */
+/*//////////////////// Timeline Styles /////////////////////
+/* Timeline wrapper */
 .timeline {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
   position: relative;
-  padding-left: 30px;
+  padding-left: 50px;
 }
 
+/* Vertical line */
 .timeline::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 15px;
+  left: 22px;
   width: 4px;
   height: 100%;
-  background: #cfe2f3;
+  background: linear-gradient(
+    to bottom,
+    #c94f7c,
+    #4aa3ff
+  );
+  border-radius: 4px;
+  opacity: 0.7;
 }
 
+/* Timeline item */
 .timeline-item {
-  margin: 15px 0;
-  padding-left: 20px;
   position: relative;
+  margin: 30px 0;
+  padding: 20px 24px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Hover effect */
+.timeline-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+/* Dot */
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: -5px;
-  top: 10px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
+  left: -35px;
+  top: 24px;
+  width: 18px;
+  height: 18px;
   background: #c94f7c;
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px rgba(201,79,124,0.15);
+}
+
+
+/* Date */
+.timeline-item .date {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+/* Title */
+.timeline-item h3 {
+  margin: 0 0 6px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #c94f7c;
+}
+
+/* Text */
+.timeline-item p {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 0.80rem;
+  color: #444;
 }
 
 /* Carousel */
