@@ -13,12 +13,12 @@ h1, h2, h3 {
   font-weight: 600;
   color: #c94f7c; /* Sakura pink */
   text-align: center;
-  line-height: 1.2
+  line-height: 1.2;
 }
 
 section {
-  padding: 80px 20px;
-  min-height: 10vh;
+  padding: 20px 20px;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,7 +33,17 @@ section.visible {
       color: #e79fb0;
     }
     .overall {
+      padding: 80px 20px;
       background: linear-gradient(#cfe2f3, white);
+    }
+    .place {
+      background: linear-gradient(white);
+    }
+    .timetable {
+      background: linear-gradient(#cfe2f3, white);
+    }
+    .dresscode {
+      background: linear-gradient(white );
     }
     .register {
       background: #fff0f5;
@@ -84,6 +94,38 @@ section.visible {
     nav a:hover {
       color: #333;
     }
+
+/* Base dot style */
+.dot {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  opacity: 0.9;
+  z-index: -1;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Left blue dot */
+.dot.left {
+  left: -50px;
+  top: 50%;
+  transform: translateY(-50%);
+  background:#cfe2f3;
+}
+
+/* Right pink dot */
+.dot.right {
+  right: -70px;
+  top: 30%;
+  background: #e79fb0;
+}
+
+/* Optional: bold look */
+.dot {
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
 
 /* Animations */
 .fade-in {
@@ -145,7 +187,7 @@ section.visible {
   overflow: hidden;
   width: 100%;
   max-width: 800px;
-  height: 450px;
+  height: 400px;
   margin: 2rem auto;
   /*border-radius: 12px;*/
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
