@@ -99,7 +99,7 @@ section.visible {
       transition: color 0.3s;
     }
     nav a:hover {
-      color: #333;
+      color: #e79fb0;
     }
 
 /* Base dot style */
@@ -510,3 +510,17 @@ h1 {
     color: var(--color-text);
 }
 
+
+
+/* Container for the sentences */
+.wishes-container {
+  position: relative;
+  width: 90%;
+  max-width: 850px;
+  height: 180px; /* Increased height to prevent clipping */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 10; /* Ensure text is on top */
+}

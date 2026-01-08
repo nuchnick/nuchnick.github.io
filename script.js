@@ -202,10 +202,3 @@ targetDateInput.addEventListener('change', (event) => {
     }
 });
 
-// --- Initialization ---
-
-// 1. Initial Call: Update the timer immediately when the page loads
-updateCountdown(); 
-
-// 2. Set Interval: Update the timer every 1 second (1000 milliseconds)
-let countdownInterval = setInterval(updateCountdown, 1000);
